@@ -18,4 +18,12 @@ while True:
     data, address = sock.recvfrom(1024)
     print(f"Client received {data.decode()} from {address}")
     
-    
+    if int(data.decode()) == packet_number:
+        packet_number = packet_number + 1
+        sock.sendto(str(packet_number).encode(), address)
+        print("Packet sent successfully")
+        time.sleep(1)
+    else:
+        sock.sendto(str(packet_number).encode(), address)
+        print("Invalid packet. Requesting again")
+        time.sleep(1)
