@@ -2,13 +2,13 @@ import socket as sk
 import random as rn
 import time
 
-IP = "192.168.1.8"
+IP = "192.168.1.4"
 port = 12345
 
 sock = sk.socket(sk.AF_INET,sk.SOCK_DGRAM)
 sock.bind((IP, port))
 
-print("Server started. Waiting for client requests...")
+print("Server started. Waiting for client requests...\n")
 
 while True:
     data, address = sock.recvfrom(1024)
@@ -21,4 +21,5 @@ while True:
     sock.sendto(response, address)
     print(f"Server sent {response.decode()} to {address}")
 
+    print("________________________\n")
     time.sleep(1)

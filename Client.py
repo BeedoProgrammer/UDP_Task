@@ -1,15 +1,13 @@
 import socket as sk
-import random as rn
 import time
 
-IP = "192.168.1.8"
+IP = "192.168.1.4"
 port = 12345
 packet_number = 0
 
 sock = sk.socket(sk.AF_INET,sk.SOCK_DGRAM)
-sock.bind((IP, port))
 
-print("Connection with server started")
+print("Connection with server started\n")
 
 while True:
     sock.sendto(str(packet_number).encode(), (IP, port))
@@ -22,8 +20,10 @@ while True:
         packet_number = packet_number + 1
         sock.sendto(str(packet_number).encode(), address)
         print("Packet sent successfully")
+        print("________________________\n")
         time.sleep(1)
     else:
         sock.sendto(str(packet_number).encode(), address)
         print("Invalid packet. Requesting again")
+        print("________________________\n")
         time.sleep(1)
