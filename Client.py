@@ -17,7 +17,7 @@ while True:
     print(f"Client received {data.decode()} from {address}")
     
     if int(data.decode()) == packet_number:
-        packet_number = packet_number + 1
+        packet_number += 1
         print("Packet sent successfully")
         print("________________________\n")
         time.sleep(1)
